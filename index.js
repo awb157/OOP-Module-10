@@ -39,6 +39,9 @@ function Managerquestions(){
         const employee=new Manager(responce.managername,responce.managerId,responce.email,responce.officenumber)
 workeraray.push(employee)
 console.log (workeraray)
+
+newMember()
+
     })
 }
 
@@ -74,6 +77,9 @@ function engineerquestions(){
         const employee=new Engineer(responce.engineername,responce.engineerId,responce.email,responce.gethub)
 workeraray.push(employee)
 console.log (workeraray)
+
+newMember()
+
     })
 }
 
@@ -104,8 +110,39 @@ function internquestions(){
 
     ])
     .then(responce=>{
-        const employee=new intern(responce.internname,responce.internId,responce.email,responce.schoolname)
+        const employee=new Intern(responce.internname,responce.internId,responce.email,responce.schoolname)
 workeraray.push(employee)
 console.log (workeraray)
+
+newMember()
+
     })
 }
+
+
+
+function newMember() {
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'newMember',
+          message: 'Which type employee yo',
+          choices: [
+            'Engineer',
+            'Intern',
+            "No More",
+          ],
+        },
+      ])
+      .then((response) => {
+        if(response.newMember === "Engineer"){
+engineerquestions()
+        }
+        else if(response.newMember === "Intern"){
+internquestions()
+        } else {
+          console.log("html")
+        }
+      });
+  }
