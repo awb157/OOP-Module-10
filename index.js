@@ -3,7 +3,7 @@ const Intern=require("./lib/Intern");
 const Manager=require("./lib/Manager");
 const inquirer=require("inquirer");
 const fs= require("fs");
-
+const addhtml=require("./utility/addhtml")
 const workeraray=[]
 //const worker=new Engineer("austin",20395,"awb157@gmial.com","awb157")
 //console.log(worker)
@@ -104,7 +104,7 @@ function internquestions(){
 
         {
             type:"input",
-            name:"school name",
+            name:"schoolname",
             message:"internschool",
         },
 
@@ -143,6 +143,7 @@ engineerquestions()
 internquestions()
         } else {
           console.log("html")
+          fs.writeFileSync("./dist/index.html",addhtml(workeraray))
         }
       });
   }
